@@ -31,6 +31,10 @@
         <!-- For glyphicon -->
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     </head>
+
+    <!-- Body -->
+    @RenderBody()
+
     <body>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -96,16 +100,26 @@
             </div>
         </nav>
 
-        <!-- Page Content -->
-        @RenderBody()
-
         <!-- Container -->
         <div class="container">
             <hr>
             <footer>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
+                    <div class="col-lg-4 text-center">
+                        <strong>Site Haritası</strong><hr />
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <strong>Evernote</strong><hr />
+                        <p>Copyright &copy;  @DateTime.Now.Year</p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <strong>E-Bülten</strong><hr />
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="E-Mail Address">
+                                <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon-send"></span>Send</button></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </footer>
