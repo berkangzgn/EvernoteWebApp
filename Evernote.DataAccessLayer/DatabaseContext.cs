@@ -10,9 +10,9 @@ namespace Evernote.DataAccessLayer
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<EvernoteUser> Evernotes { get; set; }
+        public DbSet<EvernoteUser> Users { get; set; }
         public DbSet<EvernoteNote> Notes { get; set; }
-        public DbSet<EvernoteComment> Comment { get; set; }
+        public DbSet<EvernoteComment> Comments { get; set; }
         public DbSet<EvernoteCategory> Categories { get; set; }
         public DbSet<EvernoteLiked> Likes { get; set; }
 

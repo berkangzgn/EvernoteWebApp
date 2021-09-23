@@ -11,6 +11,7 @@ namespace EvernoteWebapp.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Evernote.BusinessLayer.ForTest db = new Evernote.BusinessLayer.ForTest();
             return View();
         }
     }
