@@ -40,6 +40,14 @@ body {
     color: #d17581;
 }
 
+    .ratings button{
+        color: #d17581;
+    }
+
+    .ratings button {
+        color: #2a191b;
+    }
+
 .thumbnail {
     padding: 0;
 }
