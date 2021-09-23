@@ -18,6 +18,11 @@
 <li>Üyeleri listeleyebilirler ve admin olarak atama yapabilirler </li>
 <li>Notlar üzerinde işlem yapabilirler</li>
 <li>Profili olacak </li>
-<li> </li>
-<li> </li>
-<li> </li>
+<h4>Data Access Layer</h4>
+İçerisinde;</br>
+<li>Entity framework'ün context'i yer alacak</li>
+<li>Tabloları temsil eden diğer nesneler yer alacak (Note class, category class, user class)(Bunlar UI ve Business'ta da kullanılacak.). </li>
+DataAccessLayer, Entities.dll içerisine aldığımızda UI, DataAccess, Business refere edebiliriz. Bu üçüyle de çalışabilir. Bu üç katman da entitiesi tanıyıp birlikte çalışabilecek. </br></br>
+ Not : Başka class'larla ilgili olan classlarda tanımlara virtual etiketini de koyuyoruz. 1'e *, *'a 1 ya da *'a * ilişkilerde bu ilişkiyi alttaki satırla tanımlayabiliriz.</br>
+ <strong>public virtual List<EvernoteNote> Notes { get; set; } </strong> </br></br>
+ 
