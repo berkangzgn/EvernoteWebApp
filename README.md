@@ -25,4 +25,5 @@
 DataAccessLayer, Entities.dll içerisine aldığımızda UI, DataAccess, Business refere edebiliriz. Bu üçüyle de çalışabilir. Bu üç katman da entitiesi tanıyıp birlikte çalışabilecek. </br></br>
  Not : Başka class'larla ilgili olan classlarda tanımlara virtual etiketini de koyuyoruz. 1'e *, *'a 1 ya da *'a * ilişkilerde bu ilişkiyi alttaki satırla tanımlayabiliriz.</br>
  <strong>public virtual List<EvernoteNote> Notes { get; set; } </strong> </br></br>
- 
+ <h4>Data Annotations</h4>
+SQL'de isimleri kendi isteğimize göre koyacağımız kuralları oluştururken data annotations'tan yararlanılır.</br>
