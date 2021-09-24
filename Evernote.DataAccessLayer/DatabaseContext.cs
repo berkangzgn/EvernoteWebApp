@@ -15,6 +15,5 @@ namespace Evernote.DataAccessLayer
         public DbSet<EvernoteComment> Comments { get; set; }
         public DbSet<EvernoteCategory> Categories { get; set; }
         public DbSet<EvernoteLiked> Likes { get; set; }
-
     }
 }

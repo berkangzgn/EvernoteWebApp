@@ -25,8 +25,14 @@ namespace Evernote.Entities
 
             // Bir kullanıcının birden çok notu olabilir ama bir notun bir kullanıcısı olacağı için list olarak tutmadık.
         public virtual EvernoteUser Owner { get; set; }
-        public virtual List<EvernoteComment> Comments { get; set; }
         public virtual EvernoteCategory EvernoteCategory { get; set; }
+        public virtual List<EvernoteComment> Comments { get; set; }
         public virtual List<EvernoteLiked> Likes { get; set; }
+
+        public EvernoteNote()
+        {
+            Comments = new List<EvernoteComment>();
+            Likes = new List<EvernoteLiked>();
+        }
     }
 }

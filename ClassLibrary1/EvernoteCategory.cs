@@ -19,5 +19,11 @@ namespace Evernote.Entities
 
             // Başka class'la ilgili olduğu için virtual olarak tanımladık.
         public virtual List<EvernoteNote> Notes { get; set; }
+        
+            // Otomatik olarak listeyi oluşturuyoruz. Veri eklerken null hatası almamak istiyoruz
+        public EvernoteCategory()
+        {
+            Notes = new List<EvernoteNote>();
+        }
     }
 }
