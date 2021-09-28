@@ -10,7 +10,7 @@ namespace Evernote.DataAccessLayer
 {
     public class Initializer : CreateDatabaseIfNotExists<DatabaseContext>
     {
-            // Seed : Db oluştuktan sonrs örnek data basılırken kullanılır
+            // Seed : Db oluştuktan sonra örnek data basılırken kullanılır
         protected override void Seed(DatabaseContext context)
         {
                 // Adding admin
@@ -28,6 +28,8 @@ namespace Evernote.DataAccessLayer
                 ModifiedOn = DateTime.Now.AddMinutes(5),
                 ModifiedUsername = "bgezgin"
             };
+                // Adding admin to db
+            context.Users.Add(admin);
 
                 // Adding standart user
             EvernoteUser standartUser = new EvernoteUser()
@@ -37,7 +39,7 @@ namespace Evernote.DataAccessLayer
                 Email = "bgerkanezgin.bg2014@gmail.com",
                 ActivateGuid = Guid.NewGuid(),
                 IsActive = true,
-                IsAdmin = true,
+                IsAdmin = false,
                 Username = "berkang",
                 Password = "1234.",
                 CreatedOn = DateTime.Now.AddHours(1),
@@ -45,7 +47,6 @@ namespace Evernote.DataAccessLayer
                 ModifiedUsername = "berkang"
             };
                 // Adding users to db
-            context.Users.Add(admin);
             context.Users.Add(standartUser);
 
                 // Adding user
@@ -58,13 +59,14 @@ namespace Evernote.DataAccessLayer
                     Email = FakeData.NetworkData.GetEmail(),
                     ActivateGuid = Guid.NewGuid(),
                     IsActive = true,
-                    IsAdmin = true,
+                    IsAdmin = false,
                     Username = $"user{i}",
                     Password = "1234.",
                     CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                     ModifiedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
                     ModifiedUsername = $"user{i}"
                 };
+                    // Adding users to db
                 context.Users.Add(user);
             }
             context.SaveChanges();
@@ -89,7 +91,7 @@ namespace Evernote.DataAccessLayer
                         Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(5,25)),
                         Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1,3)),
                         IsDraft = false,
-                        LikeCount = FakeData.NumberData.GetNumber(0,200),
+                        LikeCount = FakeData.NumberData.GetNumber(1,10),
                             // Yazarına bi admin bi standart kullanıcı atıyoruz
                         Owner = (k%2==0)?admin:standartUser,
                         CreatedOn = FakeData.DateTimeData.GetDatetime(DateTime.Now.AddYears(-1), DateTime.Now),
@@ -98,7 +100,7 @@ namespace Evernote.DataAccessLayer
                     };
                     category.Notes.Add(note);
 
-                    // Adding comments
+                        // Adding comments
                     for (int j = 0; j < FakeData.NumberData.GetNumber(3,5); j++)
                     {
                         EvernoteComment comment = new EvernoteComment()

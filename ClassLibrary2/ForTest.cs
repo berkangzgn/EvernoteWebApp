@@ -12,9 +12,9 @@ namespace Evernote.BusinessLayer
         {
             DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
                 // Database tablo çağırarak oluşturmak için;
-            //db.Users.ToList
-            
-             db.Database.CreateIfNotExists();
+                // CreateIfNotExists Db çağırır ama örnek data oluşumunu tetiklemez
+            // db.Database.CreateIfNotExists();
+            db.Notes.ToList();
         }
     }
 }
