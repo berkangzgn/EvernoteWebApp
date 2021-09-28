@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Evernote.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,14 @@ namespace Evernote.BusinessLayer
     {
         public ForTest()
         {
-            DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
-                // Database tablo çağırarak oluşturmak için;
-                // CreateIfNotExists Db çağırır ama örnek data oluşumunu tetiklemez
-            // db.Database.CreateIfNotExists();
-            db.Categories.ToList();
+            //DataAccessLayer.DatabaseContext db = new DataAccessLayer.DatabaseContext();
+            //    // Database tablo çağırarak oluşturmak için;
+            //    // CreateIfNotExists Db çağırır ama örnek data oluşumunu tetiklemez
+            //// db.Database.CreateIfNotExists();
+            //db.Categories.ToList();
+
+            Repository<EvernoteCategory> repo = new Repository<EvernoteCategory>();
+            repo.List();
         }
     }
 }
