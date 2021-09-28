@@ -11,7 +11,7 @@ namespace Evernote.Entities
     [Table("Notes")]
     public class EvernoteNote : EntityBase
     {
-        [Required, StringLength(20)]
+        [Required, StringLength(200)]
         public string Title { get; set; }
         
         [Required, StringLength(200)]

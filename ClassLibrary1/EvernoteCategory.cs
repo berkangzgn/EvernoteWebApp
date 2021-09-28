@@ -11,7 +11,7 @@ namespace Evernote.Entities
     [Table("Categories")]
     public class EvernoteCategory : EntityBase
     {
-        [Required, StringLength(20)]
+        [Required, StringLength(200)]
         public string Title { get; set; }
         
         [StringLength(200)]

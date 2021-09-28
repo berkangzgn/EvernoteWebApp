@@ -14,7 +14,7 @@ namespace Evernote.BusinessLayer
                 // Database tablo çağırarak oluşturmak için;
                 // CreateIfNotExists Db çağırır ama örnek data oluşumunu tetiklemez
             // db.Database.CreateIfNotExists();
-            db.Notes.ToList();
+            db.Categories.ToList();
         }
     }
 }
