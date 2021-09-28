@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Shop Homepage</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="~/Content/shop-homepage.css" rel="stylesheet">
+
+        <!-- jQuery -->
+        <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+
+        <!-- Bootstrap Js -->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- For glyphicon -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    </head>
+
+    <!-- Body -->
+    @RenderBody()
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Evernote</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-wrench"></span> Managment
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-star"></span> Top Liked
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-fire"></span> Last Added
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-copyright-mark"></span> About
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-log-in"></span> Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-log-in"></span> Sign In
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-user"></span> My Account
+                            </a>
+                        </li>>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-log-out"></span> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Container -->
+        <div class="container">
+            <hr>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-4 text-center">
+                        <strong>Site Haritası</strong><hr />
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <strong>Evernote</strong><hr />
+                        <p>Copyright &copy;  @DateTime.Now.Year</p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <strong>E-Bülten</strong><hr />
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="E-Mail Address">
+                                <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon-send"></span>Send</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
