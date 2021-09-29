@@ -12,7 +12,7 @@ using Evernote.Entities;
 namespace Evernote.DataAccessLayer.EntityFramework
 {
         // T değişkenine integer vs tarzı değerler atamamaları için bu koşulu yazdık. T tipi class olmak zorunda
-    class Repository<T> : RepositoryBase, IRepository<T> where T : class
+    public class Repository<T> : RepositoryBase, IRepository<T> where T : class
     {
         private DbSet<T> _objectSet;
 
