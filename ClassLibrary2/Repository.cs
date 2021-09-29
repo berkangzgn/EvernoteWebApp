@@ -11,9 +11,8 @@ using Evernote.Entities;
 namespace Evernote.BusinessLayer
 {
         // T değişkenine integer vs tarzı değerler atamamaları için bu koşulu yazdık. T tipi class olmak zorunda
-    class Repository<T> where T : class
+    class Repository<T> : RepositoryBase where T : class
     {
-        private DatabaseContext db = new DatabaseContext();
         private DbSet<T> _objectSet;
 
         public Repository()
