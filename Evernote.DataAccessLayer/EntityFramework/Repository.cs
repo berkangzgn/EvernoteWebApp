@@ -6,12 +6,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Evernote.DataAccessLayer;
+using Evernote.DataAccessLayer.Abstract;
 using Evernote.Entities;
 
-namespace Evernote.BusinessLayer
+namespace Evernote.DataAccessLayer.EntityFramework
 {
         // T değişkenine integer vs tarzı değerler atamamaları için bu koşulu yazdık. T tipi class olmak zorunda
-    class Repository<T> : RepositoryBase where T : class
+    class Repository<T> : RepositoryBase, IRepository<T> where T : class
     {
         private DbSet<T> _objectSet;
 
@@ -49,7 +50,7 @@ namespace Evernote.BusinessLayer
         }
 
             // Sadece Repository class içerisinde kullanılabilmesi için private olarak kullandık.
-        private int Save()
+        public int Save()
         {
             return db.SaveChanges();
         }

@@ -1,4 +1,6 @@
-﻿using Evernote.Entities;
+﻿    // Eğer ileride MySql içerisindekini kullanmak istersek .EntityFramework yerine .MySql dememiz yeterli olacak.
+using Evernote.DataAccessLayer.EntityFramework;
+using Evernote.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,7 +81,6 @@ namespace Evernote.BusinessLayer
                 Note = note,
                 Owner = owner
             };
-
             repo_comment.Insert(comment);
         }
     }

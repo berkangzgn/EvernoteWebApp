@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Evernote.BusinessLayer
+namespace Evernote.DataAccessLayer.EntityFramework
 {
         // SingletonPattern : Bir projede çalışırken bir nesnenin sadece bir kopyası olmasını istiyorsak bu pattern'i kullanırız.
         

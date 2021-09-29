@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Evernote.Entities;
 
-namespace Evernote.DataAccessLayer
+namespace Evernote.DataAccessLayer.EntityFramework
 {
     public class DatabaseContext : DbContext
     {
