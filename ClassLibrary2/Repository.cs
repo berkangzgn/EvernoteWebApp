@@ -49,7 +49,8 @@ namespace Evernote.BusinessLayer
             return Save();
         }
 
-        public int Save()
+            // Sadece Repository class içerisinde kullanılabilmesi için private olarak kullandık.
+        private int Save()
         {
             return db.SaveChanges();
         }
