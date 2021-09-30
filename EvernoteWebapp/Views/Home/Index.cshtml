@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Evernote.Entities
+@model List<EvernoteNote>
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -12,6 +15,7 @@
 
         <!-- Body -->
         <div class="col-md-9">
+            <!-- Corusel -->
             <div class="row carousel-holder">
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -41,138 +45,41 @@
                 </div>
             </div>
 
+            <!-- Notes -->
             <div class="row">
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
+                @foreach (EvernoteNote note in Model)
+                {
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://via.placeholder.com/320x150" alt="@note.Title">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#">@note.Title</a>
+                                </h4>
+                                <p>
+                                    @if (string.IsNullOrEmpty(note.Text) == false && note.Text.Length > 40)
+                                    {
+                                        // Substring belli indexten başlayıp belli karakterde almasını sağlar
+                                        @(note.Text.Substring(0,40))
+                                    }
+                                    else
+                                    {
+                                        @note.Text
+                                    }
+                                </p>
+                                <h6 class="text-right">
+                                    <span class="glyphicon glyphicon-user"></span>@note.Owner.Username<br />
+                                    <span class="glyphicon glyphicon-time"></span>@note.ModifiedOn.ToString("dd.MM.yy HH:mm")
+                                </h6>
+                            </div>
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
+                            <div class="ratings">
+                                <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
+                                <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span>@note.LikeCount</button></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
