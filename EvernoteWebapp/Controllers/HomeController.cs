@@ -1,5 +1,4 @@
-﻿using Evernote.BusinessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,11 +11,6 @@ namespace EvernoteWebapp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Evernote.BusinessLayer.ForTest test = new Evernote.BusinessLayer.ForTest();
-            //test.InsertTest();
-            //test.UpdateTest();
-            //test.DeleteTest();
-            test.CommentTest();
             return View();
         }
     }
