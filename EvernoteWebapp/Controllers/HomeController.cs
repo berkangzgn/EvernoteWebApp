@@ -68,6 +68,9 @@ namespace EvernoteWebapp.Controllers
             return View("Index", nm.GetAllNote().OrderByDescending(x => x.LikeCount).ToList());
         }
 
-
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
