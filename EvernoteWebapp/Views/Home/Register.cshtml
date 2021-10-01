@@ -1,0 +1,50 @@
+﻿@using EvernoteWebapp.ViewModel
+@model RegisterViewModel
+
+@{ ViewBag.Title = "Register"; }
+
+<link href="~/Content/LoginRegister.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Forgot Password</label>
+            <div class="login-form">
+                <div class="sign-in-html">
+                    @Html.ValidationSummary(false)
+                    <!-- Labels -->
+                    <div class="group">@Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Enter Your Username" })</div>
+                    <div class="group">@Html.TextBoxFor(model => model.EMail, new { @class = "form-control", placeholder = "Enter Your Email" })</div>
+                    <div class="group">@Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Enter Your Password", type="password" })</div>
+                    <div class="group">@Html.TextBoxFor(model => model.RePassword, new { @class = "form-control", placeholder = "Enter Your Password Again", type = "password" })</div>
+
+                    <!-- Buttons -->
+                    <div class="group">
+                        <button type="submit" class="button2">Sign In</button>
+                    </div>
+                </div>
+
+                <div class="for-pwd-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username or Email</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Reset Password">
+                    </div>
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<!-- Hidden for footer -->
+<script>
+    $(function () {
+        $("footer").parent().hide();
+    });
+</script>

@@ -1,5 +1,6 @@
 ﻿using Evernote.BusinessLayer;
 using Evernote.Entities;
+using EvernoteWebapp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,33 @@ namespace EvernoteWebapp.Controllers
         }
 
         public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel model)
+        {
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model)
         {
             return View();
         }
