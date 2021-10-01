@@ -16,5 +16,10 @@ namespace Evernote.BusinessLayer
         {
             return repo_note.List();
         }
+
+        public IQueryable<EvernoteNote> GetAllNoteQueryable()
+        {
+            return repo_note.ListQueryable();
+        }
     }
 }

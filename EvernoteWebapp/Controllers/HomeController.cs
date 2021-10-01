@@ -25,7 +25,13 @@ namespace EvernoteWebapp.Controllers
             //}
 
             NoteManager nm = new NoteManager();
-            return View(nm.GetAllNote());
+                // Descending : Büyükten küçüğe doğru sıralama
+            return View(nm.GetAllNote().OrderByDescending(x => x.ModifiedOn).ToList());
+
+                // GetAllNoteQueryable : ile IQuerryable listesi dönecek
+                // OrderByDescending : GetAllNoteQueryable'a attığımızda OrderByDescending'da sorgu cümlesine yerleştirilecek
+                // ToList kısmına geldiğinde OrderByDescending'lı bir sorgu gidip SQL'de çalışıp, SQL'de sıralayıp geri dönecek.
+            //return View(nm.GetAllNoteQueryable().OrderByDescending(x => x.ModifiedOn).ToList());
         }
 
         public ActionResult ByCategory(int? id)
@@ -45,7 +51,8 @@ namespace EvernoteWebapp.Controllers
                 return HttpNotFound();
             }
 
-            return View("Index", category.Notes);
+                // Index view'ı içerisinde dönen nesneleri görüntüledik.
+            return View("Index", category.Notes.OrderByDescending(x => x.ModifiedOn).ToList());
 
                 // Eğer ByCategory metodu selectController atlında olsaydı alttaki TempData kodları da olmak zorunda olcaktı.
 
@@ -54,5 +61,13 @@ namespace EvernoteWebapp.Controllers
             //TempData["mm"] = category.Notes;
             //return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult MostLiked(int? id)
+        {
+            NoteManager nm = new NoteManager();
+            return View("Index", nm.GetAllNote().OrderByDescending(x => x.LikeCount).ToList());
+        }
+
+
     }
 }

@@ -20,7 +20,6 @@ namespace Evernote.DataAccessLayer.EntityFramework
             _objectSet = db.Set<T>();
         }
 
-
         public List<T> List()
         {
             return _objectSet.ToList();
