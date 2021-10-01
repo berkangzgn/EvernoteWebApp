@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Evernote.DataAccessLayer.Abstract
 {
@@ -9,6 +12,8 @@ namespace Evernote.DataAccessLayer.Abstract
     public interface IRepository<T>
     {
         List<T> List();
+
+        IQueryable<T> ListQueryable();
 
         List<T> List(Expression<Func<T, bool>> where);
 

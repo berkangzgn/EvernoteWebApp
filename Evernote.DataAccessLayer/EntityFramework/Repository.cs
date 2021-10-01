@@ -11,7 +11,6 @@ using Evernote.Entities;
 
 namespace Evernote.DataAccessLayer.EntityFramework
 {
-        // T değişkenine integer vs tarzı değerler atamamaları için bu koşulu yazdık. T tipi class olmak zorunda
     public class Repository<T> : RepositoryBase, IRepository<T> where T : class
     {
         private DbSet<T> _objectSet;
@@ -26,8 +25,12 @@ namespace Evernote.DataAccessLayer.EntityFramework
             return _objectSet.ToList();
         }
 
-            // Programcı kendi isteğine göre listeyi döndürebilmesi için List olarak değil IQuerable olarak tanımlayabiliriz.
-        public List<T> List(Expression<Func<T,bool>>where)
+        public IQueryable<T> ListQueryable()
+        {
+            return _objectSet.AsQueryable<T>();
+        }
+
+        public List<T> List(Expression<Func<T, bool>> where)
         {
             return _objectSet.Where(where).ToList();
         }
@@ -40,7 +43,7 @@ namespace Evernote.DataAccessLayer.EntityFramework
 
         public int Update(T obj)
         {
-            return Save();
+           return Save();
         }
 
         public int Delete(T obj)

@@ -1,4 +1,5 @@
-﻿
+﻿@using Evernote.Entities
+@model List<EvernoteNote>
 @{
     ViewBag.Title = "Index";
 }
@@ -8,16 +9,12 @@
     <div class="row">
         <!-- Category -->
         <div class="col-md-3">
-            <p class="lead">Shop Name</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
-            </div>
+            @Html.Partial("_PartialCategories")
         </div>
 
         <!-- Body -->
         <div class="col-md-9">
+            <!-- Carousel -->
             <div class="row carousel-holder">
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -26,20 +23,25 @@
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                         </ol>
+
                         <div class="carousel-inner">
                             <div class="item active">
                                 <img class="slide-image" src="http://via.placeholder.com/800x300" alt="">
                             </div>
+
                             <div class="item">
                                 <img class="slide-image" src="http://via.placeholder.com/800x300" alt="">
                             </div>
+
                             <div class="item">
                                 <img class="slide-image" src="http://via.placeholder.com/800x300" alt="">
                             </div>
                         </div>
+                        
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </a>
+                        
                         <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
@@ -47,139 +49,59 @@
                 </div>
             </div>
 
+            <!-- Notes -->
             <div class="row">
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
+                @foreach (EvernoteNote note in Model)
+                {
+                    <div class="col-sm-4 col-lg-4 col-md-4" data-note-id="@note.Id">
+                        <div class="thumbnail">
+                            <img src="http://via.placeholder.com/320x150" alt="@note.Title">
+                            <div class="caption">
+                                <h4>
+                                    <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@note.Id">
+                                        @note.Title
+                                    </a>
+                                </h4>
+                        
+                                <h6 class="text-right">
+                                    @note.Owner.Username <span class="glyphicon glyphicon-user"></span><br />
+                                    @note.ModifiedOn.ToString("dd.MM.yy HH:mm") <span class="glyphicon glyphicon-time"></span>
+                                </h6>
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
+                                @if (string.IsNullOrEmpty(note.Text) == false && note.Text.Length > 70)
+                                {
+                                        // Substring belli indexten başlayıp belli karakterde almasını sağlar
+                                    <p>@(note.Text.Substring(0, 70) + "...")</p>
+                                    <p class="pull-right">
+                                        <a href="#" data-toggle="modal" data-target="#modal_notedetail" data-note-id="@note.Id" class="btn btn-default btn-sm">devamı <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                    </p>
+                                }
+                                
+                                else
+                                {
+                                    <p>@note.Text</p>
+                                }
+                            </div>
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
+                            <div class="ratings">
+                                <p class="pull-right">
+                                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal_comment" data-note-id="@note.Id">
+                                        <span class="glyphicon glyphicon-comment"></span> Yorumlar
+                                    </button>
+                                </p>
 
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
+                                <p>
+                                    <button class="btn btn-default btn-sm" type="button" data-liked="false" data-note-id="@note.Id">
+                                        <span class="glyphicon glyphicon-star-empty like-star"></span>&nbsp;
+                                        <span class="like-count">@note.LikeCount</span>
+                                    </button>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://via.placeholder.com/320x150" alt="">
-                        <div class="caption">
-                            <h4>
-                                <a href="#">Dolor sit.</a>
-                            </h4>
-                            <p>
-                                Consectetur adipiscing elit fusce vel.
-                            </p>
-                            <h6>
-                                <span class="glyphicon glyphicon-user"></span>Berkan<br />
-                                <span class="glyphicon glyphicon-time"></span>22.09.2021 13:34
-                            </h6>
-                        </div>
-                        <div class="ratings">
-                            <p class="pull-right"><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-comment"></span>Comments</button></p>
-                            <p><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-heart"></span></button></p>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
 </div>
+
