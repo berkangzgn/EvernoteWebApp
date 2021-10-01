@@ -44,5 +44,10 @@ namespace Evernote.BusinessLayer
         {
             return repo_category.List();
         }
+
+        public EvernoteCategory GetCategoryById(int id)
+        {
+            return repo_category.Find(x => x.Id == id);
+        }
     }
 }
